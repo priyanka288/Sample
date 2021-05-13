@@ -9,6 +9,7 @@ import Resume from './Components/Resume';
 import Contact from './Components/Contact';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
+import Api from './Components/Api';
 
 class App extends Component {
 
@@ -39,8 +40,17 @@ class App extends Component {
     });
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     this.getResumeData();
+      this.setState({ isLoading: true })
+      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      if (response.ok) {
+        const users = await response.json()
+        this.setState({ users, isLoading: false })
+        console.log(this.state.users);
+      } else {
+        this.setState({ isError: true, isLoading: false })
+      }
   }
 
   render() {
@@ -51,7 +61,7 @@ class App extends Component {
         <Resume data={this.state.resumeData.resume}/>
         <Portfolio data={this.state.resumeData.portfolio}/>
         <Testimonials data={this.state.resumeData.testimonials}/>
-        <Contact data={this.state.resumeData.main}/>
+        <Api data={this.state.users}/>
         <Footer data={this.state.resumeData.main}/>
       </div>
     );
@@ -59,3 +69,5 @@ class App extends Component {
 }
 
 export default App;
+
+
