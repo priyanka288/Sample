@@ -39,15 +39,29 @@ function DataList(){
   });
 
 
+  const getData=()=>{
+    fetch('http://jsonplaceholder.typicode.com/users',{
+         headers : { 
+           'Content-Type': 'application/json',
+           'Accept': 'application/json'
+          }
+        }
+       )
+       .then(response => response.json())
+       .then(result => setUserList(result))
+       .catch(error => console.log(error));
+     }
+     useEffect(()=>{
+       getData()
+     },[])
 
 
-
-  useEffect(()=>{
-    fetch('http://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(result => setUserList(result))
-    .catch(error => console.log(error));
-  },[])
+//   useEffect(()=>{
+//     fetch('http://jsonplaceholder.typicode.com/users')
+//     .then(response => response.json())
+//     .then(result => setUserList(result))
+//     .catch(error => console.log(error));
+//   },[])
     return <div>
         <BootstrapTable 
         bootstrap4 
