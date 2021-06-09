@@ -10,6 +10,7 @@ import Contact from './Components/Contact';
 import Testimonials from './Components/Testimonials';
 import Portfolio from './Components/Portfolio';
 import Api from './Components/Api';
+import DataList from './Components/DataList';
 
 class App extends Component {
 
@@ -60,9 +61,10 @@ class App extends Component {
         <About data={this.state.resumeData.main}/>
         <Resume data={this.state.resumeData.resume}/>
         <Portfolio data={this.state.resumeData.portfolio}/>
+        <DataList data={this.state.DataList}/>
         <Testimonials data={this.state.resumeData.testimonials}/>
-        <Api data={this.state.users}/>
         <Footer data={this.state.resumeData.main}/>
+        
       </div>
     );
   }
