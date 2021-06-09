@@ -40,7 +40,7 @@ function DataList(){
 
 
   const getData=()=>{
-    fetch('http://jsonplaceholder.typicode.com/users',{
+    fetch('https://jsonplaceholder.typicode.com/users',{
          headers : { 
            'Content-Type': 'application/json',
            'Accept': 'application/json'
